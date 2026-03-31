@@ -1,26 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <!-- <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 3 - Cube Containing Sphere</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
   </head>
   <body>
-	<script src="../js/aframe.min.js"></script>
     <a-scene>
-      <!-- <a-sphere  id="PGB sphere" position="0 2 -1.5" radius="1" rotation="0 0 0" color="blue"></a-sphere> -->
-	  <a-sphere  id="PGB sphere" radius="0.5"
-							  position="0 2 -5.5" 
-							  transparent="false"
-							  rotation="0 0 0" color="#FFCCCB"> </a-sphere>
-							 
-		<a-box	id="PGB Box" 
-				position="0 2 -5.5"
-				rotation="58 45 45"
-				transparent="true"
-				
-				blending="additive"
-				color="#11CCCB"></a-box>
-							 
+      <a-sphere
+        id="innerSphere"
+        radius="0.7"
+        position="0 1.8 -4"
+        color="#FFB6C1">
+      </a-sphere>
+
+      <a-box
+        id="outerBox"
+        position="0 1.8 -4"
+        rotation="25 35 15"
+        width="1.8"
+        height="1.8"
+        depth="1.8"
+        color="#11CCCB"
+        opacity="0.45"
+        transparent="true">
+      </a-box>
+
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="6"
+        height="6"
+        color="#7BC8A4">
+      </a-plane>
+
+      <a-sky color="#000000"></a-sky>
+
+      <a-camera position="0 1.6 0"></a-camera>
     </a-scene>
   </body>
 </html>
-
-<!-- "additive" subtractive none multiply normal -->
