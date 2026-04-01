@@ -1,31 +1,39 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <!-- <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script> -->
+    <meta charset="UTF-8">
+    <title>Exercise 4 - Mars Spinning in Cube</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
   </head>
   <body>
-	<!-- <script src="../js/aframe.min.js"></script> -->
     <a-scene>
-      <!-- <a-sphere  id="PGB sphere" position="0 2 -1.5" radius="1" rotation="0 0 0" color="blue"></a-sphere> -->
-	  <a-assets>
-			<img id="mars" src="./IMAGES/mars-surface.avif" crossorigin="anonymous">
-	  </a-assets>
-	  <a-sphere  id="PGB sphere" radius="0.5"
-							  position="0 2 -5.5" 
-							  transparent="true"
-							  blending="additive"
-							  src="#mars"
-							  animation="property: rotation; to: 0 360 0; loop: true; dur:1000 "
-							   ></a-sphere>
-							 
-		<a-box	id="PGB Box" 
-				position="0 2 -5.5"
-				
-				transparent="true"
-				blending="additive"
-				color="gray"></a-box>
-							 
+      <a-assets>
+        <img id="mars" src="./IMAGES/mars-surface.avif" crossorigin="anonymous">
+      </a-assets>
+
+      <a-entity
+        position="0 1.8 -4"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear">
+
+        <a-sphere
+          radius="0.7"
+          src="#mars"
+          animation="property: rotation; to: 0 -360 0; loop: true; dur: 2000; easing: linear">
+        </a-sphere>
+      </a-entity>
+
+      <a-box
+        position="0 1.8 -4"
+        width="1.8"
+        height="1.8"
+        depth="1.8"
+        color="#00FFFF"
+        opacity="0.3"
+        transparent="true">
+      </a-box>
+
+      <a-sky color="#000000"></a-sky>
+      <a-camera position="0 1.6 0"></a-camera>
     </a-scene>
   </body>
 </html>
-
-<!-- "additive" subtractive none multiply normal -->

@@ -1,16 +1,48 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script> 
+    <meta charset="UTF-8">
+    <title>Exercise 4 - Platonic Solids Rotation</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
   </head>
   <body>
-	
     <a-scene>
-      <a-box position="-4.0 1 -5" rotation="0 0 0" color="green"></a-box>
-      <a-entity position="-2.0 1 -5"  geometry="primitive: tetrahedron; radius: 1"></a-entity>
-      <a-entity position="0 1 -5" geometry="primitive: dodecahedron; radius: 1"></a-entity>
-      <a-entity position="2.0 1 -5" geometry="primitive: octahedron; radius: 1"></a-entity>
-      <a-entity position="4.0 1 -5" geometry="primitive: icosahedron"></a-entity>
-    </a-scene>
+      <a-box
+        position="-4 1 -5"
+        color="green"
+        animation="property: rotation; to: 0 360 360; loop: true; dur: 5000; easing: linear">
+      </a-box>
 
+      <a-entity
+        position="-2 1 -5"
+        geometry="primitive: tetrahedron; radius: 1"
+        material="color: #FF6B6B"
+        animation="property: rotation; to: 360 360 0; loop: true; dur: 5000; easing: linear">
+      </a-entity>
+
+      <a-entity
+        position="0 1 -5"
+        geometry="primitive: dodecahedron; radius: 1"
+        material="color: #FFD166"
+        animation="property: rotation; to: 0 360 360; loop: true; dur: 5000; easing: linear">
+      </a-entity>
+
+      <a-entity
+        position="2 1 -5"
+        geometry="primitive: octahedron; radius: 1"
+        material="color: #06D6A0"
+        animation="property: rotation; to: 360 0 360; loop: true; dur: 5000; easing: linear">
+      </a-entity>
+
+      <a-entity
+        position="4 1 -5"
+        geometry="primitive: icosahedron; radius: 1"
+        material="color: #4CC9F0"
+        animation="property: rotation; to: 360 360 360; loop: true; dur: 5000; easing: linear">
+      </a-entity>
+
+      <a-sky color="#000000"></a-sky>
+      <a-camera position="0 1.6 0"></a-camera>
+    </a-scene>
   </body>
 </html>
