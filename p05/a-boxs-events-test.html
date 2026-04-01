@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Exercise 5 - Click to Change Cube Colors</title>
+    <title>Exercise 5 - Click Events</title>
     <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
   </head>
   <body>
@@ -15,9 +15,11 @@
             const currentColor = el.getAttribute('color');
 
             if (currentColor === 'orange') {
-              el.setAttribute('color', 'blue');
-            } else if (currentColor === 'green') {
-              el.setAttribute('color', 'orange');
+              if (el.id === 'two') {
+                el.setAttribute('color', 'blue');
+              } else if (el.id === 'three') {
+                el.setAttribute('color', 'green');
+              }
             } else {
               el.setAttribute('color', 'orange');
             }
@@ -25,6 +27,7 @@
 
           el.addEventListener('click', this.toggleColor);
         },
+
         remove: function () {
           this.el.removeEventListener('click', this.toggleColor);
         }
