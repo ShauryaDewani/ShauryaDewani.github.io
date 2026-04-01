@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2 - Solar System</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  </head>
+  <body>
+    <script>
+      AFRAME.registerComponent('orbit', {
+        schema: {
+          radius: { type: 'number', default: 3 },
+          speed: { type: 'number', default: 0.5 },
+          centerx: { type: 'number', default: 0 },
+          centerz: { type: 'number', default: -12 }
+        },
+        init: function () {
+          this.angle = Math.random() * Math.PI * 2;
+        },
+        tick: function (time, timeDelta) {
+          this.angle += this.data.speed * (timeDelta / 1000);
+          this.el.object3D.position.x = this.data.centerx + this.data.radius * Math.cos(this.angle);
+          this.el.object3D.position.z = this.data.centerz + this.data.radius * Math.sin(this.angle);
+        }
+      });
+    </script>
+
+    <a-scene>
+      <a-assets>
+        <img id="sunTex" src="./IMAGES/sun.jpg" crossorigin="anonymous" />
+        <img id="earthTex" src="./IMAGES/earth.jpg" crossorigin="anonymous" />
+        <img id="marsTex" src="./IMAGES/mars.jpg" crossorigin="anonymous" />
+        <img id="jupiterTex" src="./IMAGES/jupiter.jpg" crossorigin="anonymous" />
+        <img id="saturnTex" src="./IMAGES/saturn.jpg" crossorigin="anonymous" />
+        <img id="saturnRingTex" src="./IMAGES/saturn-ring.png" crossorigin="anonymous" />
+        <img id="spaceTex" src="./IMAGES/space.jpg" crossorigin="anonymous" />
+      </a-assets>
+
+      <!-- Camera + controls -->
+      <a-entity camera wasd-controls look-controls position="0 2 8"></a-entity>
+
+      <!-- Lights -->
+      <a-light type="ambient" color="#888"></a-light>
+      <a-light type="point" intensity="2.2" color="#fff7cc" position="0 2 -12"></a-light>
+      <a-light type="directional" intensity="0.6" color="#ffffff" position="-3 5 2"></a-light>
+
+      <!-- Space background -->
+      <a-sky src="#spaceTex"></a-sky>
+
+      <!-- Sun -->
+      <a-sphere
+        id="sun"
+        src="#sunTex"
+        radius="1.8"
+        position="0 2 -12"
+        animation__spin="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear"
+        animation__color="property: material.color; from: #FFD54F; to: #FF7043; dir: alternate; loop: true; dur: 2000; easing: linear">
+      </a-sphere>
+
+      <!-- Earth -->
+      <a-entity orbit="radius: 4; speed: 0.9; centerx: 0; centerz: -12">
+        <a-sphere
+          src="#earthTex"
+          radius="0.55"
+          position="0 2 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear">
+        </a-sphere>
+      </a-entity>
+
+      <!-- Mars -->
+      <a-entity orbit="radius: 6; speed: 0.7; centerx: 0; centerz: -12">
+        <a-sphere
+          src="#marsTex"
+          radius="0.42"
+          position="0 2 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 3500; easing: linear">
+        </a-sphere>
+      </a-entity>
+
+      <!-- Jupiter -->
+      <a-entity orbit="radius: 8.5; speed: 0.45; centerx: 0; centerz: -12">
+        <a-sphere
+          src="#jupiterTex"
+          radius="1"
+          position="0 2 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear">
+        </a-sphere>
+      </a-entity>
+
+      <!-- Saturn + ring -->
+      <a-entity orbit="radius: 11.5; speed: 0.3; centerx: 0; centerz: -12">
+        <a-sphere
+          src="#saturnTex"
+          radius="0.9"
+          position="0 2 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 4500; easing: linear">
+        </a-sphere>
+
+        <a-ring
+          src="#saturnRingTex"
+          radius-inner="1.15"
+          radius-outer="1.8"
+          position="0 2 0"
+          rotation="90 20 0"
+          material="transparent: true; side: double; opacity: 1">
+        </a-ring>
+      </a-entity>
+
+      <!-- Ground reference removed for cleaner space scene -->
+    </a-scene>
+  </body>
+</html>
